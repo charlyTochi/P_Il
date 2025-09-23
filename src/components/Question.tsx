@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuiz } from '../context/QuizContext';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { QuizCard } from './common/QuizCard';
 import { QuestionDisplay } from './common/QuestionDisplay';
 import {  Round } from '../types/quiz';
@@ -11,7 +11,7 @@ import { QUIZ_CONSTANTS } from '../constants';
 const Question: React.FC = () => {
   const { activityId } = useParams<{ activityId: string }>();
   const navigate = useNavigate();
-  const { quizData, quizState, answerQuestion, nextQuestion, nextRound, completeRound, startActivity } = useQuiz();
+  const { quizData, quizState, answerQuestion, nextQuestion, nextRound, startActivity } = useQuiz();
   const [selectedAnswer, setSelectedAnswer] = useState<'correct' | 'incorrect' | null>(null);
   const [showSplash, setShowSplash] = useState(true);
 
