@@ -4,7 +4,7 @@ import { useQuiz } from '../context/QuizContext';
 import { Box, Typography, Button } from '@mui/material';
 import { QuizCard } from './common/QuizCard';
 import { RoundResults } from './common/RoundResults';
-import { ActivityOne, ActivityTwo, Round } from '../types/quiz';
+import { ActivityOne } from '../types/quiz';
 import { isActivityTwo, getQuestionResult, getResultsWrapperStyles, getHomeButtonStyles } from '../utils';
 import { ROUTES } from '../constants';
 

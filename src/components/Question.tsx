@@ -4,8 +4,8 @@ import { useQuiz } from '../context/QuizContext';
 import { Box, Typography, Button } from '@mui/material';
 import { QuizCard } from './common/QuizCard';
 import { QuestionDisplay } from './common/QuestionDisplay';
-import { ActivityOne, ActivityTwo, Round } from '../types/quiz';
-import { isActivityTwo, getCurrentQuestion, calculateQuestionResult, getQuizButtonStyles } from '../utils';
+import {  Round } from '../types/quiz';
+import { isActivityTwo, getCurrentQuestion, getQuizButtonStyles } from '../utils';
 import { QUIZ_CONSTANTS } from '../constants';
 
 const Question: React.FC = () => {
