@@ -113,7 +113,7 @@ const Home: React.FC = () => {
                 mb: 7,
               }}
             >
-              CAE
+              CAES
             </Typography>
             <Typography
               variant="h1"

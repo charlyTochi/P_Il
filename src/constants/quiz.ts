@@ -1,4 +1,3 @@
-// Quiz-related constants
 export const QUIZ_CONSTANTS = {
   ANSWER_DELAY: 800,
   SPLASH_DURATION: 3000,

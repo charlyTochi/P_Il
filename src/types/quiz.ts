@@ -1,5 +1,3 @@
-// TypeScript interfaces for the quiz application
-
 export interface Question {
   is_correct: boolean;
   stimulus: string;
