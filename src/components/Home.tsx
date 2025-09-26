@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuiz } from '../context/QuizContext';
 import { fetchQuizData } from '../services/quizService';
 import { Box, Container, Typography, Button, Paper } from '@mui/material';
+import { LoadingState, ErrorState } from './common/LoadingStates';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -10,59 +11,37 @@ const Home: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const loadQuizData = async () => {
-      try {
-        const data = await fetchQuizData();
-        setQuizData(data);
-        setLoading(false);
-      } catch (err) {
-        setError('Failed to load quiz data');
-        setLoading(false);
-      }
-    };
+  const loadQuizData = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await fetchQuizData();
+      setQuizData(data);
+      setLoading(false);
+    } catch (err) {
+      setError('Failed to load quiz data. Please check your connection and try again.');
+      setLoading(false);
+    }
+  }, [setQuizData]);
 
+  useEffect(() => {
     if (!quizData) {
       loadQuizData();
     } else {
       setLoading(false);
     }
-  }, [quizData, setQuizData]);
+  }, [quizData, loadQuizData]);
 
   const handleActivityStart = (activityIndex: number) => {
     navigate(`/activity/${activityIndex + 1}`);
   };
 
   if (loading) {
-    return (
-      <Box
-        sx={{
-          minHeight: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          bgcolor: 'background.default',
-        }}
-      >
-        <Typography color="primary">Loading quiz data...</Typography>
-      </Box>
-    );
+    return <LoadingState message="Preparing your quiz experience..." />;
   }
 
   if (error) {
-    return (
-      <Box
-        sx={{
-          minHeight: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          bgcolor: 'background.default',
-        }}
-      >
-        <Typography color="error">{error}</Typography>
-      </Box>
-    );
+    return <ErrorState message={error} onRetry={loadQuizData} />;
   }
 
   return (
