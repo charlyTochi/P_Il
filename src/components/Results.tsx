@@ -34,6 +34,7 @@ const Results: React.FC = () => {
       <QuizCard
         subtitle={<Typography 
           variant="subtitle1" 
+          component="div"
           color="primary" 
           gutterBottom
           sx={{
@@ -49,7 +50,7 @@ const Results: React.FC = () => {
         </Typography>}
         title={<Typography 
           variant="h1" 
-          component="h1"
+          component="div"
           sx={{
             fontSize: { xs: '2rem', sm: '2.5rem', md: '2.7rem' },
             fontWeight: 800,
@@ -101,6 +102,7 @@ const Results: React.FC = () => {
       <QuizCard
         subtitle={<Typography 
           variant="subtitle1" 
+          component="div"
           color="primary" 
           gutterBottom
           sx={{
@@ -116,7 +118,7 @@ const Results: React.FC = () => {
         </Typography>}
         title={<Typography 
           variant="h1" 
-          component="h1"
+          component="div"
           sx={{
             fontSize: { xs: '2rem', sm: '2.5rem', md: '2.6rem' },
             fontWeight: 800,

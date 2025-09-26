@@ -61,34 +61,38 @@ export const QuizCard: React.FC<QuizCardProps> = ({ title, subtitle, children })
         >
           <Box mb={{ xs: 2, sm: 3,  }}>
             {subtitle && (
-              <Typography 
-                variant="subtitle1" 
-                color="primary" 
-                gutterBottom
-                sx={{
-                  fontWeight: 700,
-                  letterSpacing: '0.01em',
-                  fontSize: { xs: '1rem', sm: '1.1rem' },
-                  textTransform: 'uppercase',
-                }}
-              >
-                {subtitle}
-              </Typography>
+              typeof subtitle === 'string' ? (
+                <Typography 
+                  variant="subtitle1" 
+                  color="primary" 
+                  gutterBottom
+                  sx={{
+                    fontWeight: 700,
+                    letterSpacing: '0.01em',
+                    fontSize: { xs: '1rem', sm: '1.1rem' },
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  {subtitle}
+                </Typography>
+              ) : subtitle
             )}
             {title && (
-              <Typography 
-                variant="h1" 
-                component="h1"
-                sx={{
-                  fontSize: { xs: '2rem', sm: '2.5rem', md: '2.4rem' },
-                  fontWeight: 800,
-                  color: 'primary.main',
-                  lineHeight: 1.2,
-                  paddingTop: { xs: 0, sm: 0, md: 4 },
-                }}
-              >
-                {title}
-              </Typography>
+              typeof title === 'string' ? (
+                <Typography 
+                  variant="h1" 
+                  component="h1"
+                  sx={{
+                    fontSize: { xs: '2rem', sm: '2.5rem', md: '2.4rem' },
+                    fontWeight: 800,
+                    color: 'primary.main',
+                    lineHeight: 1.2,
+                    paddingTop: { xs: 0, sm: 0, md: 4 },
+                  }}
+                >
+                  {title}
+                </Typography>
+              ) : title
             )}
           </Box>
           {children}
